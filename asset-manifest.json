@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/CSGORollCalculator/static/css/main.a3527cb4.css",
+    "main.js": "/CSGORollCalculator/static/js/main.b967f59a.js",
+    "static/js/787.0f8d78ff.chunk.js": "/CSGORollCalculator/static/js/787.0f8d78ff.chunk.js",
+    "index.html": "/CSGORollCalculator/index.html",
+    "main.a3527cb4.css.map": "/CSGORollCalculator/static/css/main.a3527cb4.css.map",
+    "main.b967f59a.js.map": "/CSGORollCalculator/static/js/main.b967f59a.js.map",
+    "787.0f8d78ff.chunk.js.map": "/CSGORollCalculator/static/js/787.0f8d78ff.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a3527cb4.css",
+    "static/js/main.b967f59a.js"
+  ]
+}
