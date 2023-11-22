@@ -44,9 +44,9 @@ const Calculator = () => {
   return (
     <div class="main">
       <div class="donation">
-        <p>Donation ❤️</p>
+        <p>Donation❤️</p>
         <a href="https://paypal.me/peter183?country.x=BG&locale.x=en_US">
-          <img width="30px" src="pp.png" alt="click here"/>
+          <img width="30px" src="https://github.com/PetarWho/CSGORollCalculator/blob/main/src/pp.png?raw=true" alt="click here" />
         </a>
       </div>
       <h1 class="title">CSGORoll Wager Calculator</h1>
@@ -56,6 +56,11 @@ const Calculator = () => {
         </label>
         <input class="xp-input" type="number" value={currentXP} onChange={handleInputChange} />
       </div>
+      {currentXP > XPLevels['🔴120'] && (
+        <div className="middle-text">
+          <p>Your XP is more than level 120????</p>
+        </div>
+      )}
       <div>
         {Object.keys(remainingWager).length > 0 && (
           <div class="content">

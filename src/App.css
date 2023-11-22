@@ -83,5 +83,32 @@ input[type='number'] {
 
 .donation{
   position: fixed;
-  
+
+}
+
+.donation>p{
+  font-style: italic;
+  font-size: 0.95rem;
+  color:#555
+}
+
+.donation>a>img{
+  margin-left: 10px;
+}
+.donation>a>img:hover{
+  width:31px;
+  transition: 0.2s ease;
+}
+
+.middle-text{
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-top: 50px;
+}
+
+@media screen and (max-width: 700px) {
+ .title{
+  margin: 10px 100px 10px 100px;
+ }
 }
