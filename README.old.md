@@ -1,0 +1,2 @@
+# CSGORollCalculator
+CSGORoll Wager Calculator
