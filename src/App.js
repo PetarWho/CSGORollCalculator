@@ -17,29 +17,53 @@ const XPLevels = {
 
 const Calculator = () => {
   const [currentXP, setCurrentXP] = useState();
+  const [multiplier, setMultiplier] = useState(1); // Initial value of the multiplier set to 1
 
   const handleInputChange = (event) => {
     setCurrentXP(parseInt(event.target.value, 10));
   };
 
-  const handleWagerNeeded = () => {
-    const remainingWager = {};
-    for (const level in XPLevels) {
-      if (XPLevels[level] > currentXP) {
-        const diff = XPLevels[level] - currentXP;
-        remainingWager[level] = Math.floor(diff / 400);
-      }
+  const handleMultiplierChange = (event) => {
+    let value = parseFloat(event.target.value);
+    if(value <=0){
+      value = 0.01
     }
-    return remainingWager;
+    else if (value>10){
+      value = 10
+    } 
+    setMultiplier(value);
+  };
+
+  const handleFilteredXPLevels = () => {
+    return Object.entries(XPLevels)
+      .filter(([_, levelXP]) => levelXP >= currentXP)
+      .reduce((obj, [level, levelXP]) => {
+        obj[level] = Math.floor((levelXP - currentXP) / (400 * multiplier));
+        return obj;
+      }, {});
   };
 
   const handleDiceRollingWager = (levelXP) => {
     const diff = levelXP - currentXP;
-    const wager = Math.floor(diff / 400) * 0.06;
+    const wager = Math.floor((diff / (400 * multiplier)) * 0.06);
     return Math.floor(wager);
   };
 
-  const remainingWager = handleWagerNeeded();
+  const handleFilteredDiceXPLevels = () => {
+    return Object.entries(XPLevels)
+      .filter(([_, levelXP]) => levelXP >= currentXP)
+      .reduce((obj, [level, levelXP]) => {
+        obj[level] = handleDiceRollingWager(levelXP);
+        return obj;
+      }, {});
+  };
+
+  const remainingWager = handleFilteredXPLevels();
+  const remainingDiceWager = handleFilteredDiceXPLevels();
+
+  const handleFormattedNumber = (number) => {
+    return number.toLocaleString(); // Format the number with thousands separators
+  };
 
   return (
     <div class="main">
@@ -53,11 +77,27 @@ const Calculator = () => {
         <p>❤️Use code RoyVoyTheBoy in CSGOROLL</p>
       </div>
       <h1 class="title">CSGORoll Wager Calculator</h1>
-      <div className="user-xp-box">
-        <label class="xp-label">
-          Enter your current XP:
-        </label>
-        <input class="xp-input" type="number" value={currentXP} onChange={handleInputChange} />
+      <div class="input-group">
+        <div className="user-xp-box">
+          <label class="xp-label">
+            Enter your current XP:
+          </label>
+          <input class="xp-input" type="number" value={currentXP} onChange={handleInputChange} />
+        </div>
+        <div className="user-multiplier-box">
+          <label className="multiplier-label">
+            Current multiplier:
+          </label>
+          <input
+            className="multiplier-input"
+            type="number"
+            step="0.01" // Allow the multiplier to have two decimal places
+            min="0.01"
+            max="10"
+            value={multiplier}
+            onChange={handleMultiplierChange}
+          />
+        </div>
       </div>
       {currentXP > XPLevels['🔴120'] && (
         <div className="middle-text">
@@ -70,9 +110,9 @@ const Calculator = () => {
             <div>
               <h3 class="subheading">Wager needed to reach higher levels:</h3>
               <ul class="wager-list">
-                {Object.keys(remainingWager).map((level) => (
+                {Object.keys(remainingWager).filter((level) => remainingWager[level] > 0).map((level) => (
                   <li class="level-row" key={level}>
-                    {level}: {remainingWager[level]}
+                    {level}: {handleFormattedNumber(remainingWager[level])}
                   </li>
                 ))}
               </ul>
@@ -80,16 +120,11 @@ const Calculator = () => {
             <div>
               <h3 class="subheading">Dice Rolling Wager needed to reach higher levels:</h3>
               <ul class="wager-list">
-                {Object.entries(XPLevels).map(([level, levelXP]) => {
-                  if (levelXP > currentXP) {
-                    return (
-                      <li class="level-row" key={level}>
-                        {level} - {handleDiceRollingWager(levelXP)}
-                      </li>
-                    );
-                  }
-                  return null;
-                })}
+                {Object.keys(remainingDiceWager).filter((level) => remainingDiceWager[level] > 0).map((level) => (
+                  <li class="level-row" key={level}>
+                    {level}: {handleFormattedNumber(remainingDiceWager[level])}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
