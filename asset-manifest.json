@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/CSGORollCalculator/static/css/main.dfd62666.css",
-    "main.js": "/CSGORollCalculator/static/js/main.bd2c31c4.js",
+    "main.css": "/CSGORollCalculator/static/css/main.defd23ba.css",
+    "main.js": "/CSGORollCalculator/static/js/main.e049d7f3.js",
     "static/js/787.0f8d78ff.chunk.js": "/CSGORollCalculator/static/js/787.0f8d78ff.chunk.js",
     "index.html": "/CSGORollCalculator/index.html",
-    "main.dfd62666.css.map": "/CSGORollCalculator/static/css/main.dfd62666.css.map",
-    "main.bd2c31c4.js.map": "/CSGORollCalculator/static/js/main.bd2c31c4.js.map",
+    "main.defd23ba.css.map": "/CSGORollCalculator/static/css/main.defd23ba.css.map",
+    "main.e049d7f3.js.map": "/CSGORollCalculator/static/js/main.e049d7f3.js.map",
     "787.0f8d78ff.chunk.js.map": "/CSGORollCalculator/static/js/787.0f8d78ff.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dfd62666.css",
-    "static/js/main.bd2c31c4.js"
+    "static/css/main.defd23ba.css",
+    "static/js/main.e049d7f3.js"
   ]
 }
