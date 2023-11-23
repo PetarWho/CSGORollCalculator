@@ -49,6 +49,9 @@ const Calculator = () => {
           <img width="30px" src="https://github.com/PetarWho/CSGORollCalculator/blob/main/src/pp.png?raw=true" alt="click here" />
         </a>
       </div>
+      <div class="code">
+        <p>❤️Use code RoyVoyTheBoy in CSGOROLL</p>
+      </div>
       <h1 class="title">CSGORoll Wager Calculator</h1>
       <div className="user-xp-box">
         <label class="xp-label">
